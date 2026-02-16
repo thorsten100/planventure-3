@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
 import os
 
@@ -20,8 +21,11 @@ app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'your-secret-key-chan
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
 
+# Initialize JWT
+jwt = JWTManager(app)
+
 # Import models (must be after db initialization)
-from models import User
+from models import User, Trip
 
 # Initialize CORS
 CORS(app, origins=os.getenv('CORS_ORIGINS', 'http://localhost:3000').split(','))

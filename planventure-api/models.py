@@ -1,5 +1,6 @@
 from app import db
 from datetime import datetime, timezone
+from utils import hash_password, verify_password
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -11,6 +12,14 @@ class User(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
     
     trips = db.relationship('Trip', backref='user', lazy=True, cascade='all, delete-orphan')
+    
+    def set_password(self, password):
+        """Hash and set the user's password."""
+        self.password_hash = hash_password(password)
+    
+    def check_password(self, password):
+        """Verify a password against the stored hash."""
+        return verify_password(password, self.password_hash)
     
     def __repr__(self):
         return f'<User {self.email}>'
