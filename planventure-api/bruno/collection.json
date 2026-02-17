@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "name": "PlanVenture API",
+  "uid": "planventure-api-collection",
+  "root": true,
+  "settings": {
+    "base_url": "http://localhost:5000"
+  },
+  "requests": [
+    {
+      "name": "Register User",
+      "method": "POST",
+      "url": "{{base_url}}/auth/register",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "john.doe@example.com",
+        "password": "securePassword123"
+      }
+    },
+    {
+      "name": "Register User - Invalid Email",
+      "method": "POST",
+      "url": "{{base_url}}/auth/register",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "invalid-email",
+        "password": "securePassword123"
+      }
+    },
+    {
+      "name": "Register User - Weak Password",
+      "method": "POST",
+      "url": "{{base_url}}/auth/register",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "jane.doe@example.com",
+        "password": "weak"
+      }
+    }
+  ]
+}

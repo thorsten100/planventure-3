@@ -1,0 +1,13 @@
+meta {
+  name: Register User
+  type: http
+  seq: 1
+}
+
+post http://localhost:5000/auth/register
+  Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "password": "securePassword123"
+}

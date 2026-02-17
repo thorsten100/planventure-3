@@ -27,6 +27,10 @@ jwt = JWTManager(app)
 # Import models (must be after db initialization)
 from models import User, Trip
 
+# Import and register blueprints
+from routes import auth_bp
+app.register_blueprint(auth_bp)
+
 # Initialize CORS
 CORS(app, origins=os.getenv('CORS_ORIGINS', 'http://localhost:3000').split(','))
 

@@ -1,0 +1,56 @@
+## Register User
+
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "password": "securePassword123"
+}
+
+---
+
+## Register User - Invalid Email
+
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "email": "invalid-email",
+  "password": "securePassword123"
+}
+
+---
+
+## Register User - Weak Password
+
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "email": "jane.doe@example.com",
+  "password": "weak"
+}
+
+---
+
+## Register User - Duplicate Email
+
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "password": "anotherPassword123"
+}
+
+---
+
+## Register User - Missing Fields
+
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com"
+}

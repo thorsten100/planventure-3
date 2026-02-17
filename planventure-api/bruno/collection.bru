@@ -1,0 +1,27 @@
+version = 1
+name = PlanVenture API
+type = collection
+
+[auth]
+post /auth/register
+  body: json
+  {
+    "email": "john.doe@example.com",
+    "password": "securePassword123"
+  }
+
+[auth-invalid-email]
+post /auth/register
+  body: json
+  {
+    "email": "invalid-email",
+    "password": "securePassword123"
+  }
+
+[auth-weak-password]
+post /auth/register
+  body: json
+  {
+    "email": "jane.doe@example.com",
+    "password": "weak"
+  }
